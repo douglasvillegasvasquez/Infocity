@@ -9,8 +9,8 @@ import LinkingConfiguration from '../navigation/LinkingConfiguration';
 
 const Stack = createStackNavigator();
 
-class App2 extends React.Component{ 
-//export default function App2(props) {
+class App2 extends React.Component {
+  //export default function App2(props) {
   render() {
     return (
       <View style={styles.container}>
@@ -31,3 +31,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+export default App2

@@ -6,62 +6,66 @@ import { connect } from 'react-redux'
 import Firebase from '../config/Firebase'
 
 class Profile extends React.Component {
-    handleSignout = () => {
-        Firebase.auth().signOut()
-        this.props.navigation.navigate('Login')
-    }
-//ajuste pra ir proxima tela nao funciona
-    goApp2 = () => {
-        Firebase.auth()
-        this.props.navigation.navigate('App2')
-    }
+  handleSignout = () => {
+    Firebase.auth().signOut()
+    this.props.navigation.navigate('Login')
+  }
+  //ajuste pra ir proxima tela nao funciona
+  goApp2 = () => {
+    Firebase.auth()
+    this.props.navigation.navigate('App2')
+  }
 
-    render() {
-        return (
-            <View style={styles.container}>
-            <OptionButton
+  render() {
+    return (
+      <View style={styles.container}>
+        {/* <OptionButton
             icon="md-person"
             label={this.props.user.fullname}
             onPress={this.goApp2}    
-            />
-            <OptionButton
-            label="Sair"
-            onPress={this.handleSignout} 
-            />
+            /> */}
+        <Button
+          title='Teste'
+          onPress={() => this.props.navigation.navigate('App2')}
+        />
+        <OptionButton
+          label="Sair"
+          onPress={this.handleSignout}
+        />
 
 
-            </View>
-        )
-    }
+      </View>
+    )
+  }
 }
 
 function OptionButton({ icon, label, onPress, isLastOption }) {
-    return (
-      <RectButton style={[styles.option, isLastOption && styles.lastOption]} onPress={onPress}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={styles.optionIconContainer}>
-            <Ionicons name={icon} size={22} color="rgba(0,0,0,0.35)" />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>{label}</Text>
-          </View>
+  return (
+    <RectButton style={[styles.option, isLastOption && styles.lastOption]} onPress={onPress}>
+      <View style={{ flexDirection: 'row' }}>
+        <View style={styles.optionIconContainer}>
+          <Ionicons name={icon} size={22} color="rgba(0,0,0,0.35)" />
         </View>
-      </RectButton>
-    );
-  }
+        <View style={styles.optionTextContainer}>
+          <Text style={styles.optionText}>{label}</Text>
+        </View>
+      </View>
+    </RectButton>
+  );
+}
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 })
 
 const mapStateToProps = state => {
-    return {
-        user: state.user
-    }
+  return {
+    user: state.user
+  }
 }
 
 export default connect(mapStateToProps)(Profile)
